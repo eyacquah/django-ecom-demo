@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'online_store_trial.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecom-demo-db',
-        'USER': 'postgres',
-        'PASSWORD': 'Asconda123',
-        'HOST': 'localhost',
+        'NAME': 'dbujql2u8j0h27',
+        'USER': 'yjlcrkeqygbijy',
+        'PASSWORD': '0dbe81e479dbd3e70bf6743af7dc123eb8e305fa88b06edb8952c8ccde997eaf',
+        'HOST': 'ec2-54-157-66-140.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
