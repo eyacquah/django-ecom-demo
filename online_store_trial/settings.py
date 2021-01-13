@@ -24,9 +24,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'ku636@o-u4d#q-vab8b%9$hom8&%p8yvisft$=5o7j7e70#vq8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['peaceful-cove-46544.herokuapp.com',]
 
 
 # Application definition
