@@ -1,0 +1,104 @@
+{% extends 'basic_store/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+  <!-- slider Area Start-->
+  <div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="{% static 'assets/img/hero/category.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Cart List</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+
+  <!--================Cart Area =================-->
+  <section class="cart_area section_padding">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in cart_items %}
+              <tr>
+                <td>
+                  <div class="media">
+                    <div class="d-flex">
+                      <img src="{{ item.product.image.url }}" alt="">
+                    </div>
+                    <div class="media-body">
+                      <p>{{ item.product.title }}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h5>GHS {{ item.product.price }}</h5>
+                </td>
+                <td>
+                  <div class="product_count">
+                      <span data-product="{{ item.product.pk }}" data-action="remove" class="input-number-decrement update_cart"> <i class="ti-minus"></i></span>
+                      <input class="input-number" type="text" value="{{ item.quantity }}" min="0" max="10">
+                      <span data-product="{{ item.product.pk }}" data-action="add" class="input-number-increment update_cart"> <i class="ti-plus"></i></span>
+                  </div>
+                </td>
+                <td>
+                  <h5>GHS {{ item.get_total }}</h5>
+                </td>
+              </tr>
+              {% endfor %}
+              <tr>
+                <td></td>
+                <td></td>
+                <td>
+                  <h5>Subtotal</h5>
+                </td>
+                <td>
+                  <h5>{{ order.get_cart_total }}</h5>
+                </td>
+                <td> <strong>Total Item Quantity: </strong>{{ order.get_cart_quantity }} </td>
+              </tr>
+              <tr class="shipping_area">
+                <td></td>
+                <td></td>
+                <td>
+                  <h5>Shipping</h5>
+                </td>
+                <td>
+                  <div class="shipping_box">
+                    <ul class="list">
+                      <li>
+                        Free Shipping
+                        <input type="radio" aria-label="Radio button for following text input">
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="checkout_btn_inner float-right">
+            <a class="btn_1" href="{% url 'basic_store:index' %}">Continue Shopping</a>
+            <a class="btn_1 checkout_btn_1" href="{% url 'basic_store:checkout' %}">Proceed to checkout</a>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!--================End Cart Area =================-->
+
+{% endblock %}
