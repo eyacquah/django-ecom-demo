@@ -40,7 +40,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'basic_store.apps.BasicStoreConfig',
+    'storages',
 ]
+
+AWS_STORAGE_BUCKET_NAME = 'ecom-demo-bucket-manuel'
+AWS_S3_REGION_NAME = 'us-east-2'
+AWS_ACCESS_KEY_ID = 'AKIATLVHZYAT6FYFJMVI'
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_DEFAULT_ACL = None
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
